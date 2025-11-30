@@ -239,6 +239,6 @@ Tell me which one you want and I’ll produce the artifacts immediately.
 ---
 
 ## Contact
-maruthipr456@gmail.com
-https://www.linkedin.com/in/maruthi-prasanna-reddy-45a94b257/
+mail id : maruthipr456@gmail.com
+linkedin : https://www.linkedin.com/in/maruthi-prasanna-reddy-45a94b257/
 
