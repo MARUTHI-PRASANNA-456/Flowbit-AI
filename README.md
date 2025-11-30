@@ -238,6 +238,7 @@ Tell me which one you want and I’ll produce the artifacts immediately.
 
 ---
 
-## Contact / License
-Add your preferred license (MIT recommended for most personal projects). Add contact/email in `package.json`/README if you want potential contributors to reach you.
+## Contact
+maruthipr456@gmail.com
+https://www.linkedin.com/in/maruthi-prasanna-reddy-45a94b257/
 
