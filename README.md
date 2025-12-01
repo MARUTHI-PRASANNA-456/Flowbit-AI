@@ -1,9 +1,9 @@
-# Flowbit-AI
+# Flowbit-AI 
 
 
 ## Overview
 
-Flowbit-AI appears to be a React + TypeScript project scaffolded with Vite. The repository contains `src/`, `public/`, `package.json`, TypeScript config files and testing/playwright artifacts. The repo README originally contained a React + TypeScript + Vite template placeholder. Because the repo is primarily a frontend template (no clear backend files were available in the root), some backend/API-specific details below are inferred or left as "to be supplied" where not present in the repository. citeturn0view0
+Flowbit-AI appears to be a React + TypeScript project scaffolded with Vite. The repository contains `src/`, `public/`, `package.json`, TypeScript config files and testing/playwright artifacts. The repo README originally contained a React + TypeScript + Vite template placeholder. Because the repo is primarily a frontend template (no clear backend files were available in the root), some backend/API-specific details below are inferred or left as "to be supplied" where not present in the repository.
 
 ---
 
@@ -61,7 +61,7 @@ The repository does not include a `.env` file in the public root nor a clear `.e
 
 ---
 
-## File / Folder structure (observed)
+## File / Folder structure 
 
 - `index.html` — app entry
 - `src/` — React source (components, pages, styles)
@@ -80,7 +80,7 @@ Because the Project appears to be primarily frontend, there is no database schem
 
 ---
 
-## API Documentation (example / recommended routes)
+## API Documentation 
 
 The repo does not show a backend, so these are **recommended** routes for a REST API that a frontend like this would call.
 
@@ -140,7 +140,7 @@ Below are choices and tradeoffs to help you decide:
 
 ---
 
-## Architecture decisions & code structure (suggested / inferred)
+## Architecture decisions & code structure 
 
 Observed: a React + TypeScript frontend with standard Vite layout. Without a backend present, here's a suggested architecture:
 
