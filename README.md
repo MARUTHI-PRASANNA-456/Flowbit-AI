@@ -1,24 +1,27 @@
-
 # Flowbit-AI
 
 **Repository:** MARUTHI-PRASANNA-456/Flowbit-AI.  
-*(Source inspected: the GitHub repository root and file list.)* citeturn0view0
+_(Source inspected: the GitHub repository root and file list.)_ citeturn0view0
 
 ---
 
 ## Overview
+
 Flowbit-AI appears to be a React + TypeScript project scaffolded with Vite. The repository contains `src/`, `public/`, `package.json`, TypeScript config files and testing/playwright artifacts. The repo README originally contained a React + TypeScript + Vite template placeholder. Because the repo is primarily a frontend template (no clear backend files were available in the root), some backend/API-specific details below are inferred or left as "to be supplied" where not present in the repository. citeturn0view0
 
 ---
 
 ## Quick Start — Development (assumed standard Vite commands)
+
 1. Clone the repo:
+
 ```bash
 git clone https://github.com/MARUTHI-PRASANNA-456/Flowbit-AI.git
 cd Flowbit-AI
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -28,17 +31,20 @@ yarn
 ```
 
 3. Start dev server:
+
 ```bash
 npm run dev
 ```
 
 4. Build for production:
+
 ```bash
 npm run build
 npm run preview
 ```
 
 > If `npm run dev` throws a permission error on macOS (for example: `Permission denied` when running vite), check file permissions of `node_modules/.bin/vite` and the user executing the command. Common quick fixes:
+
 ```bash
 # from project root
 rm -rf node_modules package-lock.json
@@ -49,15 +55,18 @@ sudo chown -R $(whoami) .
 ```
 
 ### Environment variables
+
 The repository does not include a `.env` file in the public root nor a clear `.env.example`. Typical env vars a frontend map/AI project would need:
+
 - `REACT_APP_API_BASE_URL` or `VITE_API_BASE_URL` — backend API root
 - `VITE_MAPBOX_TOKEN` or `REACT_APP_GOOGLE_MAPS_KEY` — map provider key (if maps used)
 - `VITE_OPENAI_API_KEY` — if interacting with OpenAI or similar services from server
-**Action**: Add a `.env.example` listing keys required by your app and never commit `.env` with secrets.
+  **Action**: Add a `.env.example` listing keys required by your app and never commit `.env` with secrets.
 
 ---
 
 ## File / Folder structure (observed)
+
 - `index.html` — app entry
 - `src/` — React source (components, pages, styles)
 - `public/` — static assets
@@ -69,69 +78,53 @@ The repository does not include a `.env` file in the public root nor a clear `.e
 ---
 
 ## Simple Schema / ER Diagram (frontend-focused)
-Because the repository appears to be primarily frontend, there is no database schema inside the code. Below is a **suggested** simple data model for a typical "Flowbit-AI" mapping/feedback app — adapt to your actual backend.
 
-```
-User
-  - id (uuid)
-  - name
-  - email
-  - role (admin/user)
-  - createdAt
-
-Project/Map
-  - id
-  - ownerId -> User.id
-  - title
-  - description
-  - createdAt
-
-Point (geo-feature)
-  - id
-  - mapId -> Project/Map.id
-  - geometry: { type: "Point", coordinates: [lng, lat] }
-  - title
-  - description
-  - metadata (json)
-  - createdBy -> User.id
-
-Polygon (geo-feature)
-  - id
-  - mapId -> Project/Map.id
-  - geometry: { type: "Polygon", coordinates: [...] }
-  - properties (json)
-```
+Because the Project appears to be primarily frontend, there is no database schema inside the code. Below is a **suggested** simple data model for a typical "Flowbit-AI" mapping/feedback app — adapt to your actual backend.
+![ER Diagram](public/er-diagram.png)
 
 ---
 
 ## API Documentation (example / recommended routes)
+
 The repo does not show a backend, so these are **recommended** routes for a REST API that a frontend like this would call.
 
 - `GET /api/maps`  
   Response:
+
   ```json
-  [{ "id": "m1", "title": "City Flow", "ownerId": "u1", "createdAt": "2025-11-01T10:00:00Z" }]
+  [
+    {
+      "id": "m1",
+      "title": "City Flow",
+      "ownerId": "u1",
+      "createdAt": "2025-11-01T10:00:00Z"
+    }
+  ]
   ```
 
 - `GET /api/maps/:mapId/features`  
   Response:
+
   ```json
   { "mapId": "m1", "features": [{ "id":"p1", "type":"Point", "coordinates":[78.4,17.44], "properties": {...} }] }
   ```
 
 - `POST /api/maps/:mapId/features`  
   Request:
+
   ```json
   { "type":"Point", "coordinates":[lng,lat], "properties": { "title":"issue", "desc":"..." } }
   ```
+
   Response:
+
   ```json
   { "ok": true, "feature": { "id":"p125", ... } }
   ```
 
-- `PUT /api/features/:featureId` — update properties/geometry  
-- `DELETE /api/features/:featureId` — delete feature  
-- `POST /api/auth/login` — returns JWT token  
+- `PUT /api/features/:featureId` — update properties/geometry
+- `DELETE /api/features/:featureId` — delete feature
+- `POST /api/auth/login` — returns JWT token
 - `GET /api/users/me` — returns user profile
 
 > Add real routes and response examples once the backend implementation exists.
@@ -139,6 +132,7 @@ The repo does not show a backend, so these are **recommended** routes for a REST
 ---
 
 ## Map library choice — guidance (what to pick and why)
+
 I could not find an explicit map library import in the accessible repo files. Below are choices and tradeoffs to help you decide:
 
 - **Mapbox GL JS** — modern vector maps, excellent performance for many points/polygons, good styling. Requires Mapbox token (commercial terms apply).
@@ -151,6 +145,7 @@ I could not find an explicit map library import in the accessible repo files. Be
 ---
 
 ## Architecture decisions & code structure (suggested / inferred)
+
 Observed: a React + TypeScript frontend with standard Vite layout. Without a backend present, here's a suggested architecture:
 
 - **Frontend (this repo)**
@@ -166,6 +161,7 @@ Observed: a React + TypeScript frontend with standard Vite layout. Without a bac
 ---
 
 ## Performance considerations (handling 1000s of points/polygons)
+
 To support thousands of features:
 
 1. **Vector tiles & clustering** — serve features as vector tiles (Tippecanoe for pre-processing) to avoid rendering all raw points at once.
@@ -178,14 +174,17 @@ To support thousands of features:
 ---
 
 ## Testing strategy
+
 Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates browser E2E tests present or planned. citeturn0view0
 
 **What I tested (or would write now):**
+
 - Playwright E2E: core user flows (login, load map, add/edit/delete feature).
 - Unit tests (Jest + React Testing Library): map wrapper functions, API client mocks, critical components.
 - Integration tests: ensuring map initialization and layer updates occur without memory leaks.
 
 **What I'd add with more time:**
+
 - Automated performance tests for rendering large feature sets (scripts that load X features and measure FPS / memory).
 - Accessibility tests (axe).
 - CI pipeline hooks that run lint, unit tests and Playwright headless tests.
@@ -193,6 +192,7 @@ Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates br
 ---
 
 ## Tradeoffs made (common in early-stage projects)
+
 - **Frontend-only repo**: quicker to prototype UI but requires separate backend to store features and handle auth.
 - **No vector tile pipeline**: simpler development by loading GeoJSON directly, but doesn't scale to 1000s of points.
 - **Using third-party map provider**: fast to implement but introduces cost and vendor lock-in.
@@ -200,6 +200,7 @@ Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates br
 ---
 
 ## Production readiness checklist (what to add/change)
+
 - Add a backend service (Node/Express, FastAPI) to persist features, handle auth, rate-limit and secure API keys.
 - Introduce CI/CD: run tests, build and deploy (Netlify/Vercel for frontend; container + Kubernetes or managed service for backend).
 - Add environment config and `.env.example`.
@@ -210,7 +211,9 @@ Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates br
 ---
 
 ## Time spent (rough, estimated)
-*(If you want me to produce a precise time log, provide a commit history or author notes. The following is a plausible breakdown for an initial MVP frontend.)*
+
+_(If you want me to produce a precise time log, provide a commit history or author notes. The following is a plausible breakdown for an initial MVP frontend.)_
+
 - Project scaffolding & UI components: 40%
 - Map integration & feature UI: 25%
 - Testing & automation scaffolding: 10%
@@ -220,6 +223,6 @@ Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates br
 ---
 
 ## Contact
+
 mail id : maruthipr456@gmail.com
 linkedin : https://www.linkedin.com/in/maruthi-prasanna-reddy-45a94b257/
-
