@@ -69,7 +69,7 @@ The repository does not include a `.env` file in the public root nor a clear `.e
 - `scripts/`, `tests/`, `test-results/`, `playwright-report` — testing scaffolding
 - TypeScript config files and `vite.config.ts`
 
-(Observed from the repo root listing). citeturn0view0
+(Observed from the repo root listing). 
 
 ---
 
@@ -150,7 +150,7 @@ Observed: a React + TypeScript frontend with standard Vite layout. Without a bac
   - `src/services/api.ts` — central API client using `fetch` or `axios`
   - `src/lib/maps/*` — map abstraction layer (wrapper functions to initialize map, add/remove layers, cluster points)
   - `src/store` — client state (React Context or Zustand/Redux)
-  - Tests using Playwright (observed) for end-to-end flows. citeturn0view0
+  - Tests using Playwright (observed) for end-to-end flows. 
 
 **Why structure this way?** Keeps map logic isolated, simplifies testing, and makes it easier to swap map libraries or the backend without scattering changes across UI components.
 
@@ -171,7 +171,7 @@ To support thousands of features:
 
 ## Testing strategy
 
-Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates browser E2E tests present or planned. citeturn0view0
+Observed artifacts: `playwright.config.ts`, `playwright-report` — indicates browser E2E tests present or planned. 
 
 **What I tested (or would write now):**
 
