@@ -1,9 +1,5 @@
 # Flowbit-AI
 
-**Repository:** MARUTHI-PRASANNA-456/Flowbit-AI.  
-_(Source inspected: the GitHub repository root and file list.)_ citeturn0view0
-
----
 
 ## Overview
 
@@ -133,7 +129,7 @@ The repo does not show a backend, so these are **recommended** routes for a REST
 
 ## Map library choice — guidance (what to pick and why)
 
-I could not find an explicit map library import in the accessible repo files. Below are choices and tradeoffs to help you decide:
+Below are choices and tradeoffs to help you decide:
 
 - **Mapbox GL JS** — modern vector maps, excellent performance for many points/polygons, good styling. Requires Mapbox token (commercial terms apply).
 - **Leaflet** — lightweight, great for raster tile providers and many plugins. Simpler API, but for very large vector layers Mapbox GL often performs better.
@@ -225,4 +221,5 @@ _(If you want me to produce a precise time log, provide a commit history or auth
 ## Contact
 
 mail id : maruthipr456@gmail.com
+<br>
 linkedin : https://www.linkedin.com/in/maruthi-prasanna-reddy-45a94b257/
